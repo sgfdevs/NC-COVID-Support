@@ -19,7 +19,7 @@ export const weekdaysJs = [
 ]
 
 export const spreadsheetUrl =
-  'https://spreadsheets.google.com/feeds/list/1NNo23idWdFofp5LbBS_3S6EQfzgbe1sVgr2GRAjucA0/1/public/values?alt=json'
+  'https://spreadsheets.google.com/feeds/list/1NSblFVpBI3pwZYtq7LIArEFg0mm3OIaR6hY_s0q9K7I/1/public/values?alt=json'
 
 export const openStreetMapAttribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 
