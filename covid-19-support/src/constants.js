@@ -30,6 +30,8 @@ export const weekdayHours = [
   { day: 'saturday' },
   { day: 'sunday' }
 ]
+export const spreadsheetUrl =
+  'https://spreadsheets.google.com/feeds/list/1NSblFVpBI3pwZYtq7LIArEFg0mm3OIaR6hY_s0q9K7I/1/public/values?alt=json'
 
 export const openStreetMapAttribution = '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 
