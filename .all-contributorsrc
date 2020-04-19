@@ -1,6 +1,6 @@
 {
   "files": [
-    "README.md"
+    "docs/readme.md"
   ],
   "imageSize": 100,
   "commit": false,
@@ -73,6 +73,15 @@
       "contributions": [
         "translation",
         "content"
+      ]
+    },
+    {
+      "login": "dsummersl",
+      "name": "Dane Summers",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/30856?v=4",
+      "profile": "http://pinedesk.biz",
+      "contributions": [
+        "code"
       ]
     }
   ],
