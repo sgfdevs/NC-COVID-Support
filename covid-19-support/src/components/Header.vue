@@ -2,6 +2,9 @@
   <b-navbar toggleable="lg" type="dark" variant="primary" id="topnav">
     <b-navbar-brand href="#">
       <slot></slot>
+      <i18n path="title" tag="span" class="pagetitle">
+        <span class="ncblue">SGF</span>
+      </i18n>
     </b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>

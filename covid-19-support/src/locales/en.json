@@ -11,7 +11,7 @@
     "devhelp": {
       "addbusiness": "add a business",
       "addinfo": "Use our online forms to {0} or {1}.",
-      "ambassadorinfo": "Help us expand coverage across North Carolina. Ambassadors will work with local government and business associations to bring NC COVID Support to their community. Email us at {0} for tools and resources to get started.",
+      "ambassadorinfo": "Help us expand coverage across Springfield. Ambassadors will work with local government and business associations to bring SGF COVID Support to their community. Email us at {0} for tools and resources to get started.",
       "becomeambassador": "Become a community ambassador",
       "conduct": "Code of Conduct",
       "devnote": "Developers - find our {0} and {1} on GitHub.",
@@ -111,7 +111,7 @@
   "locationhelp": "Please make sure your device location is enabled",
   "sidebar": {
     "close-panel": "Close search panel",
-    "info-about-us": "Currently, this site supports Chatham County and Orange County, NC. With",
+    "info-about-us": "Currently, this site supports Springfield, MO. With",
     "info-end-text": ", we can expand our coverage.",
     "info-link-text": "your help",
     "open-panel": "Open search panel",
