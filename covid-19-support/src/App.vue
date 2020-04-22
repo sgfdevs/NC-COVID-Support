@@ -17,7 +17,13 @@
       />
 
       <div id="page-content-wrapper">
-        <highlights :need="need" :class="{ toggled: isFilterOpen }" :filteredMarkers="filteredMarkers" />
+        <highlights
+          :need="need"
+          :class="{ toggled: isFilterOpen }"
+          :filteredMarkers="filteredMarkers"
+          :highlightFilters="highlightFilters"
+          @box-selected="boxSelected"
+        />
 
         <resource-map
           :filteredMarkers="filteredMarkers"
@@ -37,13 +43,27 @@ import Highlights from './components/Highlights.vue'
 import ResourceMap from './components/ResourceMap.vue'
 import AboutUsModal from './components/AboutUs.vue'
 
-import { spreadsheetUrl, weekdays, dayFilters } from './constants'
+import { spreadsheetUrl, weekdays, dayFilters, booleanFilters } from './constants'
 
 function extend(obj, src) {
   for (var key in src) {
     obj.push(src[key])
   }
   return obj
+}
+
+function addOrRemove(array, item) {
+  const exists = array.includes(item)
+
+  if (exists) {
+    return array.filter((c) => {
+      return c !== item
+    })
+  } else {
+    const result = array
+    result.push(item)
+    return result
+  }
 }
 
 export default {
@@ -72,7 +92,8 @@ export default {
       isFilterOpen: true,
       language: { name: 'English', iso: 'en' },
       locationData: { locValue: null, isSetByMap: false },
-      showList: false
+      showList: false,
+      highlightFilters: []
     }
   },
   methods: {
@@ -83,13 +104,17 @@ export default {
         return day - 1
       }
     },
+    boxSelected: function (content) {
+      this.highlightFilters = addOrRemove(this.highlightFilters, content.need)
+    },
     needSelected: function (val) {
       this.need = val
+      this.highlightFilters = []
       window.gtag('event', 'What do you need?', { event_category: 'Search - (' + this.language.name + ')', event_label: val })
     },
     daySelected: function (val) {
       this.day = val
-      // console.log("val:" + val + " getDay:" + this.getDay(val) + " - " + weekdays[this.getDay(val)].day)
+      this.highlightFilters = []
       window.gtag('event', 'When do you need it?', {
         event_category: 'Search - (' + this.language.name + ')',
         event_label: weekdays[this.getDay(val)].day
@@ -125,10 +150,17 @@ export default {
       var markers
 
       if (this.need == 'family') {
-        markers = this.entries.filter((c) => c.gsx$familymeal.$t == 1 && c.gsx$status.$t !== '0')
+        markers = this.entries.filter((c) => c.gsx$familymeal.$t == 1 && c.gsx$status.$t == '1')
       } else {
-        markers = this.entries.filter((c) => c.gsx$resource.$t === this.need && c.gsx$status.$t !== '0')
+        markers = this.entries.filter((c) => c.gsx$resource.$t === this.need && c.gsx$status.$t == '1')
       }
+
+      // Filter out the boolean items
+      this.highlightFilters.forEach((element) => {
+        if (booleanFilters.includes(element)) {
+          markers = markers.filter((c) => c['gsx$' + element].$t == '1')
+        }
+      })
 
       const dayFilter = dayFilters[this.getDay(this.day)]
 
