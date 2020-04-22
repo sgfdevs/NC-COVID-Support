@@ -2,7 +2,7 @@
   <b-navbar toggleable="lg" type="dark" variant="info" id="topnav">
     <b-navbar-brand href="#">
       <i18n path="title" tag="span" class="pagetitle">
-        <span class="ncblue">NC</span>
+        <span class="ncblue">SGF</span>
       </i18n>
     </b-navbar-brand>
 
