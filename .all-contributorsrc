@@ -83,6 +83,25 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "fredlawl",
+      "name": "Frederick",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2502213?v=4",
+      "profile": "https://github.com/fredlawl",
+      "contributions": [
+        "code",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "zhanknight",
+      "name": "zhanknight",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/20487008?v=4",
+      "profile": "https://github.com/zhanknight",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
