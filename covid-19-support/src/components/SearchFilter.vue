@@ -36,7 +36,13 @@
       @close-details="closeDetails"
     ></BusinessDetails>
 
-    <results-list :filteredMarkers="filteredMarkers" :location="location" @location-selected="passLocation" v-if="showListing" :day="day" />
+    <results-list
+      :filteredMarkers="filteredMarkers"
+      :location="location"
+      @location-selected="passLocation"
+      v-if="showListing"
+      :selected-day="day"
+    />
   </div>
 </template>
 
@@ -139,7 +145,7 @@ export default {
   transition: margin 0.25s ease-out;
   z-index: 1035;
   max-height: 100vh;
-  max-width: 290px;
+  max-width: 294px;
 }
 
 #wrapper.toggled #search-filter-wrapper {
