@@ -101,8 +101,9 @@ export default {
   },
   data() {
     return {
-      center: latLng(this.centroid.lat, this.centroid.lng),
-      zoom: this.centroid.zoom,
+      center: latLng(37.2089004, -93.2912543),
+      zoom: 13,
+      url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png',
       showParagraph: true,
       showError: false,
       errorMessage: '',
