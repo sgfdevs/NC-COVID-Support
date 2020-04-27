@@ -72,8 +72,8 @@ export default {
   },
   data() {
     return {
-      center: latLng(35.91371, -79.057919),
-      zoom: 10,
+      center: latLng(37.2089004, -93.2912543),
+      zoom: 13,
       url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png',
       showParagraph: true,
       mapOptions: { zoomSnap: 0.5, setView: true },
