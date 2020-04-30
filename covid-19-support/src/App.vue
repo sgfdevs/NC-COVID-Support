@@ -8,6 +8,7 @@
         :need="need"
         :day="day"
         :filteredMarkers="filteredMarkers"
+        :highlightFilteredMarkers="highlightFilteredMarkers"
         :location="locationData"
         :show-list="showList"
         @location-selected="passLocation"
@@ -20,7 +21,7 @@
         <highlights
           :need="need"
           :class="{ toggled: isFilterOpen }"
-          :filteredMarkers="filteredMarkers"
+          :filteredMarkers="highlightFilteredMarkers"
           :highlightFilters="highlightFilters"
           @box-selected="boxSelected"
         />
@@ -30,6 +31,9 @@
           :class="{ noselection: need == 'none' }"
           :location="locationData"
           @location-selected="passLocation"
+          @bounds="boundsUpdated"
+          @center="centerUpdated"
+          :mapUrl="mapUrl"
         />
       </div>
     </div>
@@ -42,8 +46,10 @@ import SearchFilter from './components/SearchFilter.vue'
 import Highlights from './components/Highlights.vue'
 import ResourceMap from './components/ResourceMap.vue'
 import AboutUsModal from './components/AboutUs.vue'
+import { latLng } from 'leaflet'
+import { haversineDistance, sortByDistance } from './utilities'
 
-import { spreadsheetUrl, weekdays, dayFilters, booleanFilters } from './constants'
+import { spreadsheetUrl, weekdays, dayFilters, booleanFilters, dayAny } from './constants'
 
 function extend(obj, src) {
   for (var key in src) {
@@ -85,18 +91,41 @@ export default {
     AboutUsModal
   },
   data() {
+    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
     return {
       entries: null,
       need: 'none',
-      day: new Date().getDay(),
+      day: dayAny,
       isFilterOpen: true,
       language: { name: 'English', iso: 'en' },
       locationData: { locValue: null, isSetByMap: false },
       showList: false,
-      highlightFilters: []
+      highlightFilters: [],
+      bounds: null,
+      centroid: [35.91371, -79.057919],
+      darkModeMediaQuery: darkModeMediaQuery,
+      darkMode: darkModeMediaQuery.matches,
+      mapUrl: ''
     }
   },
+  mounted() {
+    this.mapUrl = this.darkMode
+      ? 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}.png'
+      : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png'
+    this.darkModeMediaQuery.addListener((e) => {
+      this.darkMode = e.matches
+      this.mapUrl = this.darkMode
+        ? 'https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}.png'
+        : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png'
+    })
+  },
   methods: {
+    centerUpdated(center) {
+      this.centroid = [center.lat, center.lng]
+    },
+    boundsUpdated: function (bounds) {
+      this.bounds = bounds
+    },
     getDay: function (day) {
       if (day == 0) {
         return 6
@@ -108,7 +137,7 @@ export default {
       this.highlightFilters = addOrRemove(this.highlightFilters, content.need)
     },
     isAnyDaySelected(day) {
-      return day > 6
+      return day >= dayAny
     },
     needSelected: function (val) {
       this.need = val
@@ -176,23 +205,35 @@ export default {
       var closed = markers.filter((c) => c[dayFilter].$t == '0')
 
       var retList = extend(
-        open.map((marker) => ({ marker, oc: true })),
-        closed.map((marker) => ({ marker, oc: false }))
-      ).sort(function (a, b) {
-        var nameA = a.marker.gsx$providername.$t.toUpperCase() // ignore upper and lowercase
-        var nameB = b.marker.gsx$providername.$t.toUpperCase() // ignore upper and lowercase
-        if (nameA < nameB) {
-          return -1
-        }
-        if (nameA > nameB) {
-          return 1
-        }
-
-        // names must be equal
-        return 0
-      })
+        open.map((marker) => ({
+          marker,
+          oc: true,
+          distance: haversineDistance(this.centroid, [marker.gsx$lat.$t, marker.gsx$lon.$t], true)
+        })),
+        closed.map((marker) => ({
+          marker,
+          oc: false,
+          distance: haversineDistance(this.centroid, [marker.gsx$lat.$t, marker.gsx$lon.$t], true)
+        }))
+      ).sort(sortByDistance)
 
       return retList
+    },
+    highlightFilteredMarkers() {
+      var contained = [] //makers in map boundingbox
+      this.filteredMarkers.forEach((m) => {
+        if (this.bounds.contains(latLng(m.marker.gsx$lat.$t, m.marker.gsx$lon.$t))) contained.push(m)
+      })
+
+      if (!this.isAnyDaySelected(this.day)) {
+        return contained
+      }
+
+      return contained.map((m) => {
+        let obj = Object.assign({}, m)
+        obj.oc = true
+        return obj
+      })
     }
   }
 }

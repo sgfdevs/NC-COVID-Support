@@ -8,8 +8,9 @@
         :center="center"
         :options="mapOptions"
         style="height: 100%; width: 100%;"
-        @update:center="(val) => (center = val)"
+        @update:center="centerUpdated"
         @update:zoom="(val) => (zoom = val)"
+        @update:bounds="boundsUpdated"
       >
         <l-control position="topright">
           <div class="mapkey" :class="{ 'show-key': showKey }">
@@ -24,7 +25,7 @@
             </div>
           </div>
         </l-control>
-        <l-tile-layer :url="url" :attribution="attribution" />
+        <l-tile-layer :url="mapUrl" :attribution="attribution" />
 
         <v-marker-cluster ref="marks" :options="clusterOptions">
           <!-- @clusterclick="click()" @ready="ready" -->
@@ -68,13 +69,13 @@ export default {
   },
   props: {
     filteredMarkers: Array,
-    location: { locValue: Number, isSetByMap: Boolean }
+    location: { locValue: Number, isSetByMap: Boolean },
+    mapUrl: String
   },
   data() {
     return {
       center: latLng(37.2089004, -93.2912543),
       zoom: 13,
-      url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png',
       showParagraph: true,
       mapOptions: { zoomSnap: 0.5, setView: true },
       showMap: true,
@@ -86,8 +87,18 @@ export default {
   },
   mounted() {
     this.editZoomControl()
+    this.$nextTick(() => {
+      this.$emit('bounds', this.$refs.covidMap.mapObject.getBounds())
+    })
   },
   methods: {
+    centerUpdated(center) {
+      this.center = center
+      this.$emit('center', center)
+    },
+    boundsUpdated(bounds) {
+      this.$emit('bounds', bounds)
+    },
     editZoomControl() {
       const zoomControl = this.$el.querySelector('.leaflet-top.leaflet-left')
       zoomControl.className = 'leaflet-bottom leaflet-right'
@@ -100,13 +111,16 @@ export default {
       if (selected) {
         markerColor = '#ff3d3d'
       }
-
-      return ExtraMarkers.icon({
+      var markerIcon = ExtraMarkers.icon({
         markerColor,
         icon: iconClasses,
         prefix: 'fa',
         svg: true
+        // ,
+        // name: item.marker.gsx$providername.$t,
+        // nameClasses: 'markerName'
       })
+      return markerIcon
     }
     // eslint-disable-next-line no-console
     // click: (e) => console.log('clusterclick', e),

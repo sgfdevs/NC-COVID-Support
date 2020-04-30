@@ -1,13 +1,13 @@
 <template>
   <span>
     <div class="list-group list-group-flush">
-      <div class="list-group-item list-group-item-action bg-light backtolist" @click="$emit('close-details')">
+      <div class="list-group-item list-group-item-action bg-dialogs backtolist" @click="$emit('close-details')">
         <i class="fas fa-arrow-left" />
         {{ $t('label.backtolist') }}
       </div>
     </div>
     <div class="list-group list-group-flush business-details">
-      <div class="list-group-item list-group-item-action bg-light" :class="infotype">
+      <div class="list-group-item list-group-item-action bg-dialogs" :class="infotype">
         <!-- <i class="fas" :class="icon" /> -->
         <div>
           <div class="title">
@@ -50,6 +50,13 @@
               icon="fas fa-phone-alt"
               :title="business.marker.gsx$contact.$t"
               :link="'tel:' + business.marker.gsx$contact.$t"
+            />
+
+            <icon-list-item
+              v-if="!!business.marker.gsx$contactspanish.$t"
+              icon="fas fa-phone-alt"
+              :title="business.marker.gsx$contactspanish.$t + ' (' + $t('languages.es').toLowerCase() + ')'"
+              :link="'tel:' + business.marker.gsx$contactspanish.$t"
             />
 
             <icon-list-item
@@ -124,6 +131,7 @@ export default {
 .business-details {
   max-height: calc(100vh - 237px);
   overflow-y: auto;
+  overflow-x: hidden;
 }
 .backtolist {
   font-size: 0.8rem;
