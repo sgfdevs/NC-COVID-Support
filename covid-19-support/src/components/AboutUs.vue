@@ -27,16 +27,16 @@
           <p>{{ $t('about.info') }}</p>
           <ul>
             <li>
-              <a href="https://www.orangecountync.gov/1710/Visitors-Bureau">{{ $t('about.orgs.bureau') }}</a>
+              <a href="https://www.417mag.com/blog/your-covid-19-dining-plan/">417 Magazine</a>
             </li>
             <li>
-              <a href="http://www.downtownchapelhill.com/">{{ $t('about.orgs.partnership') }}</a>
+              <a href="https://www.ky3.com/content/news/RESTAURANT-LIST-How-restaurants-are-serving-you-in-the-coronavirus-crisis-568905291.html">KY3</a>
             </li>
             <li>
-              <a href="https://locallistnc.com/">{{ $t('about.orgs.localistnc') }}</a>
+              <a href="https://www.springfieldmo.org/articles/XnO_bRUAACYAmWzT/these-springfield-businesses-are-openclosed-during-the-covid-19-crises">Springfield Missouri Convention & Visitors Bureau</a>
             </li>
             <li>
-              <a href="https://www.carolinafarmstewards.org/on-farm-pickups/">{{ $t('about.orgs.farmstewards') }}</a>
+              <a href="https://www.queencitytogether.com/">Queen City Together</a>
             </li>
           </ul>
         </b-tab>
@@ -46,6 +46,9 @@
             <a href="https://www.meetup.com/Triangle-Code-for-America/">{{ $t('about.orgs.chb') }}</a>
             <a href="https://www.codeforamerica.org/">{{ $t('about.orgs.cfa') }}</a>
             <a href="mailto:contact@nccovidsupport.org">contact@nccovidsupport.org</a>
+          </i18n>
+          <i18n path="about.contactus.datainfo" tag="p">
+            <a href="mailto:sgfcovid@gmail.com">sgfcovid@gmail.com</a>
           </i18n>
         </b-tab>
       </b-tabs>
