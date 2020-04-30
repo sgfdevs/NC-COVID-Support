@@ -4,7 +4,8 @@
     "contact": "Contact Us",
     "contactus": {
       "email": "email",
-      "info": "This page is powered by the {0} of {1}. For questions, please contact us via email at {2}."
+      "info": "This page is powered by the {0} of {1}. For questions, please contact us via email at {2}.",
+      "datainfo": "For questions regarding data for this site please contact {0}."
     },
     "datahead": "NOTE ON DATA SHARING",
     "dataprivacy": "The information on NC COVID Support has been gathered from public web sources by volunteers or entered by business owners/resource providers. The data are provided to assist the public, local businesses, government partners, and non-profits during the COVID-19 pandemic. The data should not be used for commercial ventures or other purposes without the express permission of NC COVID Support.",
@@ -14,8 +15,8 @@
       "ambassadorinfo": "Help us expand coverage across Springfield. Ambassadors will work with local government and business associations to bring SGF COVID Support to their community. Email us at {0} for tools and resources to get started.",
       "becomeambassador": "Become a community ambassador",
       "conduct": "Code of Conduct",
-      "devnote": "Developers - find our {0} and {1} on GitHub.",
-      "dupsite": "Use our code to build a site for your state or region:",
+      "devnote": "Developers - find the {0} and {1} on the original project's GitHub.",
+      "dupsite": "Use this code to build a site for your state or region:",
       "info": "This is an open-source project, built to share and expand to other communities.",
       "source": "source code",
       "support": "Support your neighbors and local businesses - help us grow!",

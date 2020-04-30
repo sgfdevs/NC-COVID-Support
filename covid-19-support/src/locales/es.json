@@ -4,14 +4,15 @@
     "contact": "Contáctenos",
     "contactus": {
       "email": "Email",
-      "info": "Esta página funciona con {0} de {1}. Para preguntas, contáctenos por correo electrónico al {2}."
+      "info": "Esta página funciona con {0} de {1}. Para preguntas, contáctenos por correo electrónico al {2}.",
+      "datainfo": "Si tiene preguntas sobre los datos de este sitio, póngase en contacto con {0}."
     },
     "datahead": "NOTA SOBRE COMPARTIR DATOS",
     "dataprivacy": "La información sobre NC COVID Support ha sido recopilada de fuentes web públicas por voluntarios o ingresada por propietarios de negocios / proveedores de recursos. Los datos se proporcionan para ayudar al público, las empresas locales, los socios gubernamentales y las organizaciones sin fines de lucro durante la pandemia de COVID-19. Los datos no deben usarse para empresas comerciales u otros fines sin el permiso expreso del Soporte de NC COVID.",
     "devhelp": {
       "addbusiness": "agregar un negocio",
       "addinfo": "Utilice nuestros formularios en línea para {0} o {1}.",
-      "ambassadorinfo": "Ayúdenos a ampliar la cobertura en Carolina del Norte. Los embajadores trabajarán con el gobierno local y las asociaciones empresariales para brindar el apoyo de NC COVID a su comunidad. Envíenos un correo electrónico a {0} para obtener herramientas y recursos para comenzar.",
+      "ambassadorinfo": "Ayúdenos a ampliar la cobertura en Carolina del Norte. Los embajadores trabajarán con el gobierno local y las asociaciones empresariales para brindar el apoyo de SGF COVID a su comunidad. Envíenos un correo electrónico a {0} para obtener herramientas y recursos para comenzar.",
       "becomeambassador": "Conviértase en embajador de la comunidad",
       "conduct": "Código de Conducta",
       "devnote": "Desarrolladores: encuentre nuestros {0} y {1} en GitHub.",
