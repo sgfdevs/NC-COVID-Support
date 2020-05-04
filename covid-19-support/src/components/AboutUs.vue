@@ -30,10 +30,16 @@
               <a href="https://www.417mag.com/blog/your-covid-19-dining-plan/">417 Magazine</a>
             </li>
             <li>
-              <a href="https://www.ky3.com/content/news/RESTAURANT-LIST-How-restaurants-are-serving-you-in-the-coronavirus-crisis-568905291.html">KY3</a>
+              <a
+                href="https://www.ky3.com/content/news/RESTAURANT-LIST-How-restaurants-are-serving-you-in-the-coronavirus-crisis-568905291.html"
+                >KY3</a
+              >
             </li>
             <li>
-              <a href="https://www.springfieldmo.org/articles/XnO_bRUAACYAmWzT/these-springfield-businesses-are-openclosed-during-the-covid-19-crises">Springfield Missouri Convention & Visitors Bureau</a>
+              <a
+                href="https://www.springfieldmo.org/articles/XnO_bRUAACYAmWzT/these-springfield-businesses-are-openclosed-during-the-covid-19-crises"
+                >Springfield Missouri Convention & Visitors Bureau</a
+              >
             </li>
             <li>
               <a href="https://www.queencitytogether.com/">Queen City Together</a>

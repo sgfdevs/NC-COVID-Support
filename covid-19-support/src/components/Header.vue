@@ -48,7 +48,7 @@ export default {
     return {
       languages: [
         { iso: 'en', name: 'English' },
-        { iso: 'es', name: 'Espa&#241;ol' },
+        { iso: 'es', name: 'Espa&#241;ol' }
         // { iso: 'fr', name: 'Fran&#231;ais' },
         // { iso: 'ko', name: '한국어' },
         // { iso: 'ar', name: 'عربى' },
