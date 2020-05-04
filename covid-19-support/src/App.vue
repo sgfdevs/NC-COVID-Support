@@ -63,8 +63,7 @@ import { haversineDistance, sortByDistance } from './utilities'
 
 import { dayFilters, booleanFilters, dayAny } from './constants'
 
-import { theme } from 'theme.config'
-import ThemeHeader from 'theme.header'
+import { theme } from './themes/SGFCovidSupport/theme.config'
 
 function extend(obj, src) {
   for (var key in src) {
