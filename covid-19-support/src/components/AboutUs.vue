@@ -9,8 +9,8 @@
           <p>{{ $t('about.devhelp.info') }}</p>
           <b>{{ $t('about.devhelp.support') }}</b>
           <i18n path="about.devhelp.addinfo" tag="p">
-            <a href="https://forms.gle/fWiCg2z5CRx9ukGu7">{{ $t('about.devhelp.addbusiness') }}</a>
-            <a href="https://forms.gle/G2wrUd4TE3yqrW1FA">{{ $t('about.devhelp.updatebusiness') }}</a>
+            <a href="https://forms.gle/rvXU2eQM7MoKsRf18" target="_blank">{{ $t('about.devhelp.addbusiness') }}</a>
+            <a href="https://forms.gle/Mu68NE61hzYpfqxL9" target="_blank">{{ $t('about.devhelp.updatebusiness') }}</a>
           </i18n>
           <b>{{ $t('about.devhelp.becomeambassador') }}</b>
           <i18n path="about.devhelp.ambassadorinfo" tag="p">
