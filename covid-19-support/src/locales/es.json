@@ -7,6 +7,8 @@
       "info": "Esta página funciona con {0} de {1}. Para preguntas, contáctenos por correo electrónico al {2}.",
       "datainfo": "Si tiene preguntas sobre los datos de este sitio, póngase en contacto con {0}."
     },
+    "datahead": "NOTA SOBRE COMPARTIR DATOS",
+    "dataprivacy": "La información sobre NC COVID Support ha sido recopilada de fuentes web públicas por voluntarios o ingresada por propietarios de negocios / proveedores de recursos. Los datos se proporcionan para ayudar al público, las empresas locales, los socios gubernamentales y las organizaciones sin fines de lucro durante la pandemia de COVID-19. Los datos no deben usarse para empresas comerciales u otros fines sin el permiso expreso del Soporte de NC COVID.",
     "devhelp": {
       "addbusiness": "agregar un negocio",
       "addinfo": "Utilice nuestros formularios en línea para {0} o {1}.",
@@ -27,7 +29,6 @@
       "bureau": "Oficina de Visitantes de Chapel Hill / Condado de Orange",
       "cfa": "Código para América",
       "chb": "Brigada de Chapel Hill",
-      "farmstewards": "Asociación de administración agrícola de Carolina",
       "localistnc": "#LocalListNC",
       "partnership": "Asociación del centro de Chapel Hill",
       "sgf_417mag": "Revista 417",
@@ -36,7 +37,8 @@
       "sgf_dsa": "Asociación del centro de Springfield",
       "sgf_h4g": "Piratear para Bien Springfield",
       "sgf_ky3": "Noticias KY3",
-      "sgf_qct": "Ciudad Reina Juntos"
+      "sgf_qct": "Ciudad Reina Juntos",
+      "pittsboro-siler": "Oficina de Convenciones y Visitantes de la Ciudad de Pittsboro-Siler"
     },
     "partners": "Fuentes de información",
     "title": "Sobre este sitio"
@@ -45,6 +47,7 @@
     "childcare": "Cuidado de los niños",
     "family": "Comida familiar preparada | Comida familiar preparada",
     "farm": "Granja o Mercado de Granjeros | Granjas y Mercados de Agricultores",
+    "food_bev": "",
     "grocery": "Comestibles",
     "meal": "Comida gratis | Comidas gratis",
     "petsupplies": "Suministros de mascotas",
@@ -73,6 +76,7 @@
     "closedonday": "Cerrado (en el día seleccionado actual)",
     "curbside": "Negocio con recogida en la acera|Negocios con recogida en la acera",
     "delivery": "Entrega",
+    "details-last-updated": "Detalles actualizados por última vez",
     "discountmedical": "Descuento para trabajadores médicos|Descuentos para trabajadores médicos",
     "discounts": "",
     "drivethru": "Auto-servicio",

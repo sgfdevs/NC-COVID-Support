@@ -70,11 +70,12 @@ export default {
     filteredMarkers: Array,
     location: { locValue: Number, currentBusiness: Object, isSetByMap: Boolean },
     mapUrl: String,
-    attribution: String
+    attribution: String,
+    centroid: { lat: Number, lng: Number }
   },
   data() {
     return {
-      center: latLng(37.2089004, -93.2912543),
+      center: latLng(this.centroid.lat, this.centroid.lng),
       zoom: 13,
       showParagraph: true,
       mapOptions: { zoomSnap: 0.5, setView: true },
@@ -105,13 +106,13 @@ export default {
     latLng,
     selectedIcon(selected, item) {
       const isOpen = item.oc
-      let markerColor = isOpen ? '#566ca9' : '#999'
+      let markerColor = isOpen ? 'markeropen' : 'markerclosed'
       const iconClasses = businessIcon(item.marker)
       if (selected) {
-        markerColor = '#ff3d3d'
+        markerColor = 'markerselected'
       }
       var markerIcon = ExtraMarkers.icon({
-        markerColor,
+        className: markerColor,
         icon: iconClasses,
         prefix: 'fa',
         svg: true
@@ -145,7 +146,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .map {
   width: auto;
   height: 100%;
@@ -165,6 +166,18 @@ export default {
   }
 }
 
+.markerselected svg path {
+  fill: $marker-selected;
+}
+
+div.markeropen svg path {
+  fill: $marker-open;
+}
+
+.markerclosed svg path {
+  fill: $marker-closed;
+}
+
 .noselection.bv-example-row {
   height: 100%;
 }
@@ -173,8 +186,13 @@ export default {
   padding: 16px;
 
   &.show-key {
-    background-color: #f8f9fa !important;
+    background-color: $map-key-bg !important;
+    color: $map-key;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    @media (prefers-color-scheme: dark) {
+      background-color: $map-key-bg-dark !important;
+      color: $map-key-dark;
+    }
   }
 
   i {
@@ -183,6 +201,9 @@ export default {
     color: #000;
     cursor: pointer;
     vertical-align: middle;
+    @media (prefers-color-scheme: dark) {
+      color: #fff;
+    }
   }
 
   &.show-key i {
@@ -210,5 +231,9 @@ export default {
 }
 .mapkey.show-key .title {
   display: inline;
+}
+
+.leaflet-bottom .leaflet-control-zoom {
+  margin-bottom: 26px !important;
 }
 </style>
