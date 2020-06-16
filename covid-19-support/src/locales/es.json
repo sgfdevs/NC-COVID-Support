@@ -45,15 +45,15 @@
   },
   "category": {
     "childcare": "Cuidado de los niños",
-    "family": "Comida familiar preparada | Comida familiar preparada",
-    "farm": "Granja o Mercado de Granjeros | Granjas y Mercados de Agricultores",
-    "food_bev": "",
+    "family": "Comida familiar preparada",
+    "farm": "Granjas y Mercados de Agricultores",
+    "food_bev": "Especialidad en comidas y bebidas",
     "grocery": "Comestibles",
-    "meal": "Comida gratis | Comidas gratis",
-    "petsupplies": "Suministros de mascotas",
-    "pharmacy": "Farmacia | Farmacias",
-    "restaurant": "Restaurante | Restaurantes",
-    "school": "Comida escolar | Comidas escolares"
+    "meal": "Comidas gratis",
+    "pet": "Suministros de mascotas",
+    "pharmacy": "Farmacia",
+    "restaurant": "Restaurantes",
+    "school": "Comidas escolares"
   },
   "dayofweek": {
     "any": "Alguna",
@@ -88,6 +88,7 @@
     "freemeals": "Lugar de comidas gratis|Lugares de comidas gratis",
     "freeproduce": "Lugar de productos agrícolas gratuitso|Lugares de productos agrícolas gratuitos",
     "instructions": "Instrucciones",
+    "locationhelplinktext": "aprende más",
     "mapkey": "Guia de mapa",
     "mealpublic": "Comidas abiertas al público",
     "mealstudent": "Comidas para estudiantes",
@@ -115,6 +116,7 @@
     "ms": "birmano",
     "zh": "Chino simplificado"
   },
+  "locationhelp": "",
   "sidebar": {
     "close-panel": "Cerrar panel de búsqueda",
     "info-about-us": "Actualmente, este sitio admite Springfield, Missouri. Con",

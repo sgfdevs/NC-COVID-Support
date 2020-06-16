@@ -37,15 +37,15 @@
   },
   "category": {
     "childcare": "Penjagaan kanak-kanak",
-    "family": "Hidangan keluarga yang disediakan | Makanan keluarga yang disediakan",
-    "farm": "Pasar Ladang atau Petani | Pasaran Ladang & Petani",
-    "food_bev": "",
-    "grocery": "Runcit | Groceries",
-    "meal": "Makanan percuma | Makanan percuma",
-    "petsupplies": "Bekalan Haiwan Peliharaan",
-    "pharmacy": "Farmasi | Farmasi",
-    "restaurant": "Restoran | Restoran",
-    "school": "Makan sekolah | Makanan sekolah"
+    "family": "Makanan keluarga yang disediakan",
+    "farm": "Pasaran Ladang & Petani",
+    "food_bev": "Makanan & minuman khas",
+    "grocery": "Groceries",
+    "meal": "Makanan percuma",
+    "pet": "Bekalan Haiwan Peliharaan",
+    "pharmacy": "Farmasi",
+    "restaurant": "Restoran",
+    "school": "Makanan sekolah"
   },
   "dayofweek": {
     "any": "Sebarang",
@@ -80,6 +80,7 @@
     "freemeals": "Lokasi makanan percuma | Lokasi makan percuma",
     "freeproduce": "Lokasi menghasilkan percuma | Lokasi menghasilkan percuma",
     "instructions": "Arahan",
+    "locationhelplinktext": "Ketahui lebih lanjut",
     "mapkey": "Kunci Peta",
     "mealpublic": "Makanan dibuka untuk orang ramai",
     "mealstudent": "Makanan untuk pelajar",
@@ -107,6 +108,7 @@
     "ms": "Burma",
     "zh": "Bahasa Cina Ringkas"
   },
+  "locationhelp": "",
   "sidebar": {
     "close-panel": "Tutup panel carian",
     "info-about-us": "Pada masa ini, laman web ini menyokong Chatham County dan Orange County, NC. Dengan",

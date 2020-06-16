@@ -18,15 +18,28 @@
               <h6 class="title">{{ $t('label.mapkey') }}</h6>
               <i @click="showKey = !showKey" class="fas fa-info-circle" />
             </div>
-            <div class="keys" :class="{ 'show-key': showKey }">
-              <icon-list-item :image="require('../images/Blue.png')" :title="$t('label.open')" link="" />
-              <icon-list-item :image="require('../images/Grey.png')" :title="$t('label.closedonday')" link="" />
-              <icon-list-item :image="require('../images/Red.png')" :title="$t('label.selected')" link="" />
+            <div class="keys" :class="{ 'show-key': showKey }" v-for="item in mapKey" v-bind:key="item.title">
+              <icon-list-item :leaflet-icon="item.icon" :title="item.title" link="" />
             </div>
           </div>
         </l-control>
         <l-tile-layer :url="mapUrl" :attribution="attribution" />
-
+        <l-circle
+          name="Accuracy"
+          :lat-lng="userLocationData"
+          v-if="userLocationData"
+          :radius="accuracyRadius()"
+          :weight="1"
+          :class-name="'locAccuracy'"
+        ></l-circle>
+        <l-circle-marker
+          name="Your Location"
+          :lat-lng="userLocationData"
+          v-if="userLocationData"
+          :radius="circleRadius()"
+          :weight="1"
+          :class-name="'locMarker'"
+        ></l-circle-marker>
         <v-marker-cluster ref="marks" :options="clusterOptions">
           <!-- @clusterclick="click()" @ready="ready" -->
           <l-marker
@@ -37,13 +50,22 @@
             @click="$emit('location-selected', { locValue: index, locId: item.marker.id.$t, isSetByMap: true })"
           ></l-marker>
         </v-marker-cluster>
+        <l-control position="bottomright" class="user-location-button">
+          <a href="#" @click="getUserLocation" class="user-location-link" ref="useLocation">
+            <i class="fas fa-location-arrow"></i>
+          </a>
+        </l-control>
+        <b-alert variant="warning" class="location-alert" :show="showError" dismissible @dismissed="resetError" fade>
+          {{ errorMessage }}
+        </b-alert>
       </l-map>
     </div>
   </b-container>
 </template>
 
 <script>
-import { LMap, LTileLayer, LMarker, LControl } from 'vue2-leaflet'
+import { BAlert } from 'bootstrap-vue'
+import { LMap, LTileLayer, LMarker, LControl, LCircle, LCircleMarker } from 'vue2-leaflet'
 import { latLng, Icon, ExtraMarkers } from 'leaflet'
 import Vue2LeafletMarkerCluster from 'vue2-leaflet-markercluster'
 import IconListItem from './IconListItem.vue'
@@ -59,10 +81,13 @@ Icon.Default.mergeOptions({
 export default {
   name: 'ResourceMap',
   components: {
+    BAlert,
     LMap,
     LTileLayer,
     LMarker,
     LControl,
+    LCircle,
+    LCircleMarker,
     'v-marker-cluster': Vue2LeafletMarkerCluster,
     IconListItem
   },
@@ -76,11 +101,19 @@ export default {
   data() {
     return {
       center: latLng(this.centroid.lat, this.centroid.lng),
-      zoom: 13,
+      zoom: this.centroid.zoom,
       showParagraph: true,
+      showError: false,
+      errorMessage: '',
+      userLocationData: false,
       mapOptions: { zoomSnap: 0.5, setView: true },
       showMap: true,
       locationData: location,
+      accuracy: 0,
+      circle: {
+        border: 'white',
+        fill: '#f00'
+      },
       clusterOptions: { spiderfyOnMaxZoom: true, maxClusterRadius: 40, disableClusteringAtZoom: 16 },
       showKey: false
     }
@@ -91,6 +124,39 @@ export default {
       this.$emit('bounds', this.$refs.covidMap.mapObject.getBounds())
     })
   },
+  computed: {
+    mapKey() {
+      return [
+        {
+          title: this.$t('label.open'),
+          icon: ExtraMarkers.icon({
+            className: 'markeropen',
+            icon: 'na',
+            prefix: 'fa',
+            svg: true
+          })
+        },
+        {
+          title: this.$t('label.closedonday'),
+          icon: ExtraMarkers.icon({
+            className: 'markerclosed',
+            icon: 'na',
+            prefix: 'fa',
+            svg: true
+          })
+        },
+        {
+          title: this.$t('label.selected'),
+          icon: ExtraMarkers.icon({
+            className: 'markerselected',
+            icon: 'na',
+            prefix: 'fa',
+            svg: true
+          })
+        }
+      ]
+    }
+  },
   methods: {
     centerUpdated(center) {
       this.center = center
@@ -99,9 +165,53 @@ export default {
     boundsUpdated(bounds) {
       this.$emit('bounds', bounds)
     },
+    resetError() {
+      this.showError = false
+      this.errorMessage = ''
+    },
+    userIcon() {
+      const icon = ExtraMarkers.icon({
+        markerColor: 'usermarker',
+        icon: 'fas fa-home',
+        prefix: 'fa',
+        svg: true
+      })
+      return icon
+    },
+    getUserLocation() {
+      var map = this.$refs.covidMap.mapObject
+      map.locate({ setView: true, enableHighAccuracy: true, watch: true, maximumAge: 60000 })
+      map.on('locationfound', (locationEvent) => {
+        if (locationEvent.latitude && locationEvent.longitude) {
+          this.userLocationData = latLng(locationEvent.latitude, locationEvent.longitude)
+          // this.centerUpdated(this.userLocationData)
+          this.accuracy = locationEvent.accuracy
+          this.$refs.useLocation.classList.add('active')
+        }
+      })
+      map.on('locationerror', (err) => {
+        if (err.message && err.code != err.TIMEOUT) {
+          this.showError = true
+          this.errorMessage = err.message
+          this.errorMessage += ' Please check your browser settings and ensure you have given our site permission to view your location.'
+          this.$refs.useLocation.classList.add('disabled')
+        }
+      })
+    },
     editZoomControl() {
       const zoomControl = this.$el.querySelector('.leaflet-top.leaflet-left')
       zoomControl.className = 'leaflet-bottom leaflet-right'
+    },
+    circleRadius() {
+      var radius = 8
+      if (radius <= 5) {
+        radius = 5
+      }
+      return radius
+    },
+    accuracyRadius() {
+      var radius = this.accuracy
+      return radius
     },
     latLng,
     selectedIcon(selected, item) {
@@ -120,6 +230,7 @@ export default {
         // name: item.marker.gsx$providername.$t,
         // nameClasses: 'markerName'
       })
+
       return markerIcon
     }
     // eslint-disable-next-line no-console
@@ -156,11 +267,33 @@ export default {
     margin-right: 8px; */
 }
 
+.locAccuracy {
+  color: $map-accuracy-outline;
+  fill: $map-accuracy;
+  fill-opacity: 0.15;
+  cursor: grab !important;
+}
+
+.locMarker {
+  color: $map-location-outline;
+  fill: $map-location;
+  fill-opacity: 1;
+  cursor: grab !important;
+}
+
+.alert-warning {
+  @media (prefers-color-scheme: dark) {
+    background-color: theme-color-level('warning', 2) !important;
+    color: theme-color-level('warning', 8) !important;
+    border-color: theme-color-level('warning', 2) !important;
+  }
+}
+
 .bv-example-row {
   height: calc(100% - 124px);
 }
 
-@media (min-width: 768px) {
+@include media-breakpoint-up(sm) {
   .bv-example-row {
     height: calc(100% - 116px);
   }
@@ -176,6 +309,10 @@ div.markeropen svg path {
 
 .markerclosed svg path {
   fill: $marker-closed;
+}
+
+.usermarker {
+  background-color: $user-marker;
 }
 
 .noselection.bv-example-row {
@@ -232,8 +369,64 @@ div.markeropen svg path {
 .mapkey.show-key .title {
   display: inline;
 }
-
+.location-alert {
+  position: absolute;
+  bottom: 0px;
+  left: calc(50% - 175px);
+  width: 350px;
+  z-index: 1000;
+}
 .leaflet-bottom .leaflet-control-zoom {
   margin-bottom: 26px !important;
+}
+.leaflet-control-zoom a:hover {
+  background-color: #f4f4f4 !important;
+  @media (prefers-color-scheme: dark) {
+    background-color: $gray-300 !important;
+  }
+}
+.leaflet-control-zoom a.leaflet-disabled {
+  background-color: #f4f4f4 !important;
+  @media (prefers-color-scheme: dark) {
+    background-color: $gray-300 !important;
+  }
+}
+.user-location-button {
+  bottom: 68px !important;
+  right: 2px !important;
+  @media (min-width: 768px) {
+    right: 0px !important;
+  }
+}
+.user-location-link {
+  border-radius: 2.5px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  display: block;
+  background-color: $white;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  @media (min-width: 768px) {
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    border-radius: 4px;
+  }
+  text-align: center;
+  color: #000 !important;
+  &:hover {
+    background-color: #f4f4f4;
+    @media (prefers-color-scheme: dark) {
+      background-color: $gray-300 !important;
+    }
+  }
+  &.active {
+    color: theme-color('primary') !important;
+  }
+  &.disabled {
+    color: theme-color('#bbb') !important;
+  }
 }
 </style>

@@ -10,7 +10,12 @@
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
         <b-nav-item right>
-          <b-button size="sm" class="my-2 my-sm-0" variant="buttons" type="button" @click="$bvModal.show('about-us')"
+          <b-button
+            size="sm"
+            class="my-2 my-sm-0"
+            variant="buttons"
+            type="button"
+            onclick="window.open('https://forms.gle/fWiCg2z5CRx9ukGu7','_blank')"
             ><i class="fas fa-plus-square" aria-hidden="true" /> {{ $t('about.devhelp.addbusiness') }}</b-button
           >
         </b-nav-item>
@@ -18,6 +23,10 @@
         <b-nav-item right @click="$bvModal.show('about-us')">
           {{ $t('about.linktext') }}
         </b-nav-item>
+        <b-nav-item :href="item.url" v-for="(item, index) in socialMedia" v-bind:key="index">
+          <i :class="'fab fa-' + item.icon"></i> <span class="sm-name">{{ item.name }}</span>
+        </b-nav-item>
+
         <b-nav-item-dropdown right>
           <template v-slot:button-content>
             <i class="fas fa-globe-americas" aria-hidden="true" />
@@ -38,7 +47,8 @@
 export default {
   name: 'app-header',
   props: {
-    language: String
+    language: String,
+    socialMedia: Array
   },
   data() {
     return {
@@ -103,6 +113,12 @@ export default {
   }
 }
 
+.btn-buttons {
+  @media (prefers-color-scheme: light) {
+    color: $button-text !important;
+  }
+}
+
 .navbar-nav > li > .dropdown-menu a:hover {
   background-color: $nav-dropdown-bg-hover;
   @media (prefers-color-scheme: dark) {
@@ -122,5 +138,12 @@ export default {
 
 .ncblue {
   color: $teal;
+}
+
+.sm-name {
+  display: inline;
+  @include media-breakpoint-up(lg) {
+    display: none;
+  }
 }
 </style>
