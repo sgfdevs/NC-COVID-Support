@@ -6,6 +6,14 @@ export const theme = {
     },
     initialMapZoom: 13
   },
+  socialMedia: [
+    {
+      name: 'GitHub',
+      icon: 'github',
+      url: 'https://github.com/sgfdevs/sgf-covid-support'
+    }
+  ],
+
   data: {
     spreadsheetUrl: 'https://spreadsheets.google.com/feeds/list/1NSblFVpBI3pwZYtq7LIArEFg0mm3OIaR6hY_s0q9K7I/1/public/values?alt=json'
   },
