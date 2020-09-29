@@ -28,6 +28,7 @@ $light-orange: #ee8842;
 $marker-open: #566ca9 !default;
 $marker-closed: #999 !default;
 $marker-selected: #ff3d3d !default;
+$user-marker: $pink !default;
 
 $warning: $yellow;
 $danger: $red;
@@ -51,6 +52,8 @@ $body-color: #111;
 $modal-bg-dark: #222;
 $modal-body-dark: #eee;
 $hover-color-dark: $gray-500;
+$button-text: $white;
+$button-text-dark: $gray-500;
 
 $nav-dropdown: $white;
 $nav-dropdown-dark: rgba(255, 255, 255, 0.8);
@@ -64,8 +67,19 @@ $map-key-bg-dark: theme-color('secondaryDark');
 $map-key: color-yiq($map-key-bg);
 $map-key-dark: color-yiq($map-key);
 
+// Used for the location of the user
+$map-location: theme-color('tertiary');
+$map-location-outline: $white;
+
+// Used to show the possible inaccuracy of the users location
+$map-accuracy: $blue;
+$map-accuracy-outline: $white;
+
 $navbar-padding-x: 1rem;
 $navbar-padding-y: 0;
+
+$directions-background: #fff;
+$directions-background-dark: $gray-900;
 
 // Define your Bootstrap variable overrides here
 //  $enable-shadows: true;
