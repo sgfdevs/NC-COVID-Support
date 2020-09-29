@@ -2,7 +2,7 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-14-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-17-orange.svg?style=flat-square)](#contributors-)
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
@@ -14,37 +14,48 @@
 
 Created by [Code for Chapel Hill](http://www.codeforchapelhill.com/) part of [Code for America](https://www.codeforamerica.org/)
 
-## Link to the live website: [NC COVID Support](https://www.nccovidsupport.org)
+## Link to live websites built with this code:
+
+# [NC COVID Support](https://www.nccovidsupport.org)
+
+# [Springfield COVID Support](https://www.sgfcovidsupport.org)
 
 ![The NC COVID Support Website](/covid-19-support/src/images/NCCOVID.png)
 
-## This project is
+## This tool creates a mobile-friendly map of community resources, featuring:
 
-- A mobile-friendly website with an interactive map and table of local resources.
-- A tool to help our communities and neighbors navigate the COVID crisis.
-- A collaborative effort connected to local officials and support organizations.
-- An open project that can be quickly adapted to other locations & future needs.
+- a simple Google sheet as the database
+- interactive map and list views of the data
+- room for custom notes and business details for each listing
+- support for multiple languages
+- a basic filter function
 
-## The types of resource questions we want to answer
+## We built this tool to help our community find answers to these questions:
 
 - Where can I find a free meal?
-- Where can I find free diapers/toilet paper/personal care items?
 - Where can I find a drive-up pharmacy?
 - Where can I find a market with senior/vulnerable shopping hours?
 - Where can I find a pet store with a drive-up option?
 - Which businesses offer discounts for medical workers?
 
+## We hope that you'll explore this tool to explore and support your community with:
+
+- a map of food pantry locations
+- a map of minority-owned businesses
+- a map of historic trees in your community
+- .... and other community needs that you identify
+
+## A community resource map is only as good as the data behind the map, and the human relationships behind the data. We hope this tool gives you a solid starting point to start conversations within your community and to create partnerships that address community needs.
+
+If you are reading this, chances are you are most interested in using and customizing this code in support of an existing data need. Does the map you have in mind require YOU to create and maintain the database behind the map? If so, we encourage you to reach out within your community, identify needs, and build partnerships that will support the project, keep the data management sustainable, and create a living product connected to community needs.
+
 ## Authors
 
 This project was initiated by [Code for Chapel Hill](http://www.codeforchapelhill.com/) with input from our local town and county officials.
 
-## How to contribute
+### Help us build and improve the project code!
 
-There are two areas we need help, one is with the ongoing software development of this project and the other is with the task of collating and adding accurate up to date data for the site.
-
-### Contribution to the project code
-
-It is great that you are interested in helping to contribute to our project, please take a look at our [How to Contribute](contributing.md) page for more details.
+To get started, please take a look at our [How to Contribute](contributing.md) page for more details.
 
 ### Become a Content Editor
 
@@ -52,15 +63,7 @@ We are always looking for people to join our content data team, as our site grow
 
 ## Replicating the project
 
-When we first started this project, we hoped that other areas would be interested in replicating our site for their area and working together to build an even better platform. Visit our [Replicating the site](replicating-the-site.md) page for more information.
-
-## Find us on Social Media
-
-Please follow our social media accounts and help us to spread the word about the site.
-
-- Twitter: [@nccovidsupport](https://www.twitter.com/nccovidsupport)
-- Instagram: [@nccovidsupport](https://www.instagram.com/nccovidsupport)
-- Facebook: [facebook.com/nccovidsupport](https://www.facebook.com/nccovidsupport)
+We've built the code to make it easy for other communities to make their own map. Visit our [Replicating the site](replicating-the-site.md) page for more information.
 
 ## Contributors ✨
 
@@ -83,10 +86,15 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/fredlawl"><img src="https://avatars3.githubusercontent.com/u/2502213?v=4" width="100px;" alt=""/><br /><sub><b>Frederick</b></sub></a><br /><a href="https://github.com/code-for-chapel-hill/NC-COVID-Support/commits?author=fredlawl" title="Code">💻</a> <a href="#maintenance-fredlawl" title="Maintenance">🚧</a></td>
     <td align="center"><a href="https://github.com/zhanknight"><img src="https://avatars1.githubusercontent.com/u/20487008?v=4" width="100px;" alt=""/><br /><sub><b>zhanknight</b></sub></a><br /><a href="https://github.com/code-for-chapel-hill/NC-COVID-Support/issues?q=author%3Azhanknight" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/mitomon"><img src="https://avatars3.githubusercontent.com/u/11986108?v=4" width="100px;" alt=""/><br /><sub><b>mitomon</b></sub></a><br /><a href="#translation-mitomon" title="Translation">🌍</a></td>
-    <td align="center"><a href="https://github.com/eparadise"><img src="https://avatars2.githubusercontent.com/u/43389857?v=4" width="100px;" alt=""/><br /><sub><b>Eliza Paradise</b></sub></a><br /><a href="https://github.com/code-for-chapel-hill/NC-COVID-Support/commits?author=eparadise" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/eparadise"><img src="https://avatars2.githubusercontent.com/u/43389857?v=4" width="100px;" alt=""/><br /><sub><b>Eliza Paradise</b></sub></a><br /><a href="https://github.com/code-for-chapel-hill/NC-COVID-Support/commits?author=eparadise" title="Code">💻</a> <a href="https://github.com/code-for-chapel-hill/NC-COVID-Support/commits?author=eparadise" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/cw2908"><img src="https://avatars2.githubusercontent.com/u/9000855?v=4" width="100px;" alt=""/><br /><sub><b>Chris W</b></sub></a><br /><a href="https://github.com/code-for-chapel-hill/NC-COVID-Support/commits?author=cw2908" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/codetheorem"><img src="https://avatars3.githubusercontent.com/u/54779517?v=4" width="100px;" alt=""/><br /><sub><b>Hrishikesh Agarwal</b></sub></a><br /><a href="https://github.com/code-for-chapel-hill/NC-COVID-Support/commits?author=codetheorem" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/helenx15"><img src="https://avatars3.githubusercontent.com/u/49924616?v=4" width="100px;" alt=""/><br /><sub><b>helenx15</b></sub></a><br /><a href="https://github.com/code-for-chapel-hill/NC-COVID-Support/commits?author=helenx15" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="http://levizitting.com/"><img src="https://avatars0.githubusercontent.com/u/9029666?v=4" width="100px;" alt=""/><br /><sub><b>Levi Zitting</b></sub></a><br /><a href="https://github.com/code-for-chapel-hill/NC-COVID-Support/commits?author=glitchedmob" title="Code">💻</a> <a href="#ideas-glitchedmob" title="Ideas, Planning, & Feedback">🤔</a> <a href="#design-glitchedmob" title="Design">🎨</a></td>
+    <td align="center"><a href="https://github.com/aliciawu-dev"><img src="https://avatars2.githubusercontent.com/u/60446139?v=4" width="100px;" alt=""/><br /><sub><b>Alicia Wu</b></sub></a><br /><a href="https://github.com/code-for-chapel-hill/NC-COVID-Support/commits?author=aliciawu-dev" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/joonyoungleeduke"><img src="https://avatars1.githubusercontent.com/u/61634932?v=4" width="100px;" alt=""/><br /><sub><b>Joon Young Lee</b></sub></a><br /><a href="https://github.com/code-for-chapel-hill/NC-COVID-Support/commits?author=joonyoungleeduke" title="Code">💻</a></td>
   </tr>
 </table>
 

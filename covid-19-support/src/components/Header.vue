@@ -27,7 +27,7 @@
           <i :class="'fab fa-' + item.icon"></i> <span class="sm-name">{{ item.name }}</span>
         </b-nav-item>
 
-        <b-nav-item-dropdown right>
+        <b-nav-item-dropdown right class="lang-dropdown">
           <template v-slot:button-content>
             <i class="fas fa-globe-americas" aria-hidden="true" />
             <span v-html="language" class="language" />
@@ -85,6 +85,9 @@ export default {
   float: right;
 }
 
+.lang-dropdown ul {
+  margin-bottom: 20px;
+}
 .language {
   padding: 0 5px;
 }
@@ -101,6 +104,7 @@ export default {
 .navbar-nav > li > .dropdown-menu {
   background-color: $nav-dropdown-bg;
   text-align: right;
+
   @media (prefers-color-scheme: dark) {
     background-color: $nav-dropdown-bg-dark;
   }
@@ -108,6 +112,7 @@ export default {
 
 .navbar-nav > li > .dropdown-menu a {
   color: $nav-dropdown;
+
   @media (prefers-color-scheme: dark) {
     color: $nav-dropdown-dark;
   }
@@ -121,15 +126,17 @@ export default {
 
 .navbar-nav > li > .dropdown-menu a:hover {
   background-color: $nav-dropdown-bg-hover;
+
   @media (prefers-color-scheme: dark) {
     background-color: $nav-dropdown-bg-hover-dark;
   }
 }
 
-@media (min-width: 768px) {
+@include media-breakpoint-up(sm) {
   .navbar-nav {
     margin-bottom: 0 !important;
   }
+
   .navbar-brand {
     margin-right: 2px !important;
     font-size: 1.25rem !important;
@@ -142,6 +149,7 @@ export default {
 
 .sm-name {
   display: inline;
+
   @include media-breakpoint-up(lg) {
     display: none;
   }

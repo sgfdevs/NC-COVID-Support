@@ -65,6 +65,7 @@
     "tuesday": "Tuesday",
     "wednesday": "Wednesday"
   },
+  "getdirections": "Get directions",
   "label": {
     "address": "Address",
     "allweek": "All week",
@@ -104,6 +105,7 @@
     "selected": "Selected",
     "seniorhours": "Senior hours",
     "specialhours": "Senior shopping hours",
+    "useyourlocation": "Use your location",
     "website": "Website"
   },
   "languages": {
